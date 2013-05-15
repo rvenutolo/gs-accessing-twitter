@@ -133,46 +133,15 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 @Configuration
 @EnableWebMvc
 @ComponentScan
 public class HelloTwitterConfiguration {
-
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
-
 }
 ```
 
 This class is concise, but there's plenty going on under the hood. [`@EnableWebMvc`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html) handles the registration of a number of components that enable Spring's support for annotation-based controllers—you'll build one of those in an upcoming step. And we've also annotated the configuration class with [`@ComponentScan`](http://static.springsource.org/spring/docs/3.2.x/javadoc-api/org/springframework/context/annotation/ComponentScan.html) which tells Spring to scan the `hello` package for those controllers (along with any other annotated component classes).
-
-Also, this example will use [Thymeleaf](../understanding-thymeleaf) as a view implementation to present information to the user. Therefore, the configuration class needs a few essential Thymeleaf beans to enable Thymeleaf templates as Spring views.
 
 <a name="initial"></a>
 Enabling Twitter
@@ -188,11 +157,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 
@@ -202,30 +166,6 @@ import org.springframework.social.twitter.config.annotation.EnableTwitter;
 @EnableTwitter(appId="1234567890", appSecret="shhhhh!!!")
 @ComponentScan
 public class HelloTwitterConfiguration {
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
 }
 ```
 
@@ -247,11 +187,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -262,30 +197,6 @@ import org.springframework.social.config.annotation.EnableInMemoryConnectionRepo
 @EnableInMemoryConnectionRepository
 @ComponentScan
 public class HelloTwitterConfiguration {
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
 }
 ```
 
@@ -306,11 +217,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -331,31 +237,6 @@ public class HelloTwitterConfiguration {
 			}
 		};
 	}
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
-
 }
 ```
 
@@ -380,11 +261,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -414,30 +290,6 @@ public class HelloTwitterConfiguration {
 		return new ConnectController(connectionFactoryLocator, connectionRepository);
 	}
 
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
-	}
-
 }
 ```
 
@@ -449,7 +301,7 @@ Although much of what `ConnectController` does involves redirecting to Twitter a
 
 `ConnectController` does not define its own connection views, so we'll need to create them ourselves. First, here's a Thymeleaf view to be shown when no connection to Twitter exists:
 
-`src/main/webapp/connect/twitterConnect.html`
+`src/main/resources/templates/connect/twitterConnect.html`
 ```html
 <html>
 	<head>
@@ -472,7 +324,7 @@ The form on this view will POST to /connect/twitter, which will kick off the OAu
 
 Here's the view to be displayed when a connection exists:
 
-`src/main/webapp/connect/twitterConnected.html`
+`src/main/resources/templates/connect/twitterConnected.html`
 ```html
 <html>
 	<head>
@@ -576,11 +428,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.thymeleaf.spring3.SpringTemplateEngine;
-import org.thymeleaf.spring3.view.ThymeleafViewResolver;
-import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
-import org.thymeleaf.templateresolver.TemplateResolver;
-import org.springframework.web.servlet.ViewResolver;
 
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
@@ -614,30 +461,6 @@ public class HelloTwitterConfiguration {
 	@Bean
 	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
 		return new ConnectController(connectionFactoryLocator, connectionRepository);
-	}
-
-	// THYMELEAF CONFIG
-	@Bean
-	public TemplateResolver templateResolver() {
-		ServletContextTemplateResolver resolver = new ServletContextTemplateResolver();
-		resolver.setPrefix("/");
-		resolver.setSuffix(".html");
-		resolver.setTemplateMode("HTML5");
-		return resolver;
-	}
-	
-	@Bean
-	public SpringTemplateEngine templateEngine() {
-		SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-		templateEngine.setTemplateResolver(templateResolver());
-		return templateEngine;
-	}
-	
-	@Bean
-	public ViewResolver viewResolver() {
-		ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-		resolver.setTemplateEngine(templateEngine());
-		return resolver;
 	}
 
 }
