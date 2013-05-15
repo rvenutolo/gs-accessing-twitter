@@ -394,7 +394,7 @@ Displaying User Data
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
-`src/main/webapp/hello.html`
+`src/main/resources/templates/hello.html`
 ```html
 <html>
 	<head>
