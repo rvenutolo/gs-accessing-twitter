@@ -129,7 +129,6 @@ The first step is to set up a simple Spring configuration class. It'll look like
 ```java
 package hello;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -153,7 +152,6 @@ Since we'll be accessing Twitter data in our application, we'll need to enable S
 ```java
 package hello;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -183,7 +181,6 @@ For the purposes of this guide's sample application, an in-memory connection rep
 ```java
 package hello;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -289,7 +286,6 @@ public class HelloTwitterConfiguration {
 	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
 		return new ConnectController(connectionFactoryLocator, connectionRepository);
 	}
-
 }
 ```
 
@@ -381,7 +377,6 @@ public class HelloTwitterController {
 		model.addAttribute("friends", friends);
 		return "hello";
 	}
-	
 }
 ```
 
@@ -462,7 +457,6 @@ public class HelloTwitterConfiguration {
 	public ConnectController connectController(ConnectionFactoryLocator connectionFactoryLocator, ConnectionRepository connectionRepository) {
 		return new ConnectController(connectionFactoryLocator, connectionRepository);
 	}
-
 }
 ```
 
