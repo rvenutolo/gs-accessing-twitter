@@ -124,7 +124,6 @@ Before you can fetch a user's data from Twitter, there are a few things that you
 package hello;
 
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.social.UserIdSource;
 import org.springframework.social.config.annotation.EnableInMemoryConnectionRepository;
 import org.springframework.social.connect.ConnectionFactoryLocator;
@@ -132,8 +131,7 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 
-@Configuration
-@EnableTwitter(appId="myAppId", appSecret="shhhhh!!!!")
+@EnableTwitter(appId="3se6dplpiWhqJjDOfM6iQ", appSecret="NJpQGWSpnQZ6KV58XOabtKdzWDCZtNQHqLC2yPnE")
 @EnableInMemoryConnectionRepository
 public class TwitterConfig {
 
@@ -305,11 +303,13 @@ import org.springframework.bootstrap.SpringApplication;
 import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableAutoConfiguration
 @EnableWebMvc
+@Import(TwitterConfig.class)
 @ComponentScan
 public class Application {
 
@@ -326,6 +326,8 @@ public class Application {
 The `main()` method defers to the [`SpringApplication`][] helper class, providing `Application.class` as an argument to its `run()` method. This tells Spring to read the annotation metadata from `Application` and to manage it as a component in the _[Spring application context][u-application-context]_.
 
 The `@ComponentScan` annotation tells Spring to search recursively through the `hello` package and its children for classes marked directly or indirectly with Spring's [`@Component`][] annotation. This directive ensures that Spring finds and registers the `GreetingController`, because it is marked with `@Controller`, which in turn is a kind of `@Component` annotation.
+
+The `@Import` annotation tells Spring to import additional Java configuration. Here it is asking Spring to import the `TwitterConfig` class where you enabled Twitter in your application.
 
 The [`@EnableAutoConfiguration`][] annotation switches on reasonable default behaviors based on the content of your classpath. For example, because the application depends on the embeddable version of Tomcat (tomcat-embed-core.jar), a Tomcat server is set up and configured with reasonable defaults on your behalf. And because the application also depends on Spring MVC (spring-webmvc.jar), a Spring MVC [`DispatcherServlet`][] is configured and registered for you — no `web.xml` necessary! Auto-configuration is a powerful, flexible mechanism. See the [API documentation][`@EnableAutoConfiguration`] for further details.
 
