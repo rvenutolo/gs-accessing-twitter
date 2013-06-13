@@ -34,7 +34,7 @@ Before you can fetch a user's data from Twitter, there are a few things that you
 
     {!include:complete/src/main/java/hello/TwitterConfig.java}
 
-Since the application will be accessing Twitter data, `TwitterConfig` is annotated with [`@EnableTwitter`][@EnableTwitter]). Notice that, as shown here, the `appId` and `appSecret` attributes have fake values. For the code to work, you'll need to [obtain a real application ID and secret][register-twitter-app] and substitute these fake values for the real values given to you by Twitter.
+Since the application will be accessing Twitter data, `TwitterConfig` is annotated with [`@EnableTwitter`][@EnableTwitter]). Notice that, as shown here, the `appId` and `appSecret` attributes have been given fake values. For the code to work, you'll need to [obtain a real application ID and secret][register-twitter-app] and substitute these fake values for the real values given to you by Twitter.
 
 Notice that `TwitterConfig` is also annotated with [`@EnableInMemoryConnectionRepository`][@EnableInMemoryConnectionRepository]. After a user authorizes your application to access their Twitter data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
 

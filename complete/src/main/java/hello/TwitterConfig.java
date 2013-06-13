@@ -8,7 +8,7 @@ import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.connect.web.ConnectController;
 import org.springframework.social.twitter.config.annotation.EnableTwitter;
 
-@EnableTwitter(appId="3se6dplpiWhqJjDOfM6iQ", appSecret="NJpQGWSpnQZ6KV58XOabtKdzWDCZtNQHqLC2yPnE")
+@EnableTwitter(appId="someAppId", appSecret="shhhhhh!!!")
 @EnableInMemoryConnectionRepository
 public class TwitterConfig {
 
