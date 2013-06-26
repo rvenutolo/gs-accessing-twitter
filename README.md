@@ -112,7 +112,8 @@ In a project directory of your choosing, create the following subdirectory struc
 
 TODO: mention that we're using Spring Bootstrap's [_starter POMs_](../gs-bootstrap-starter) here.
 
-Note to experienced Maven users who are unaccustomed to using an external parent project: you can take it out later, it's just there to reduce the amount of code you have to write to get started.
+> Note to experienced Maven users who don't use an external parent project: You can take it out later, it's just there to reduce the amount of code you have to write to get started.
+
 
 <a name="initial"></a>
 Enable Twitter
@@ -265,7 +266,7 @@ public class HelloController {
 
 The `helloTwitter()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access their Twitter data. If not, then the user is redirected to `ConnectController` where they may kick off the authorization process.
 
-If the user has authorized the application to access their Twitter data, then it will fetch the user's profile as well as a list of profiles belonging to the user's friends (the Twitter users that the user follows). Both are placed into the model to be displayed by the view identified as "hello".
+If the user has authorized the application to access their Twitter data, then the application will be able to fetch almost any data pertaining to the authorizing user. For the purposes of this guide's application, it will only fetch the user's profile as well as a list of profiles belonging to the user's friends (the Twitter users that the user follows, not those that follow the user). Both are placed into the model to be displayed by the view identified as "hello".
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
@@ -287,6 +288,8 @@ Speaking of the "hello" view, here it is as a Thymeleaf template:
 </html>
 ```
 
+This template simply displays a greeting to the user and a list of the user's friends.
+Note that even though the full user profiles were fetched, only the names from those profiles are used in this template.
 
 Make the application executable
 -------------------------------

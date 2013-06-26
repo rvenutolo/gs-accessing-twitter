@@ -76,12 +76,14 @@ With Twitter configured in your application, you now can write a Spring MVC cont
 
 The `helloTwitter()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access their Twitter data. If not, then the user is redirected to `ConnectController` where they may kick off the authorization process.
 
-If the user has authorized the application to access their Twitter data, then it will fetch the user's profile as well as a list of profiles belonging to the user's friends (the Twitter users that the user follows). Both are placed into the model to be displayed by the view identified as "hello".
+If the user has authorized the application to access their Twitter data, then the application will be able to fetch almost any data pertaining to the authorizing user. For the purposes of this guide's application, it will only fetch the user's profile as well as a list of profiles belonging to the user's friends (the Twitter users that the user follows, not those that follow the user). Both are placed into the model to be displayed by the view identified as "hello".
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
     {!include:complete/src/main/resources/templates/hello.html}
 
+This template simply displays a greeting to the user and a list of the user's friends.
+Note that even though the full user profiles were fetched, only the names from those profiles are used in this template.
 
 Make the application executable
 -------------------------------
