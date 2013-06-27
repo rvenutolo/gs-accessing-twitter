@@ -3,7 +3,7 @@
 What you'll build
 -----------------
 
-This guide walks you through creating a simple web application that accesses user data from Twitter and a list of Twitter users that the user follows.
+This guide walks you through creating a simple web application that accesses profile data from a Twitter user and from Twitter users whom the user follows.
 
 What you'll need
 ----------------
@@ -123,7 +123,7 @@ When you click **Connect to Twitter**, the browser is redircted to Twitter for a
 
 ![Twitter needs your permission to allow the application to access your data.](images/twauth.png)
 
-At this point, Twitter asks if you'd like to allow the sample application to read Tweets from your profile and see who you follow. If you agree, it will also be able to read your profile details. Click **Authorize app** to grant permission.
+At this point, Twitter asks if you'd like to allow the sample application to read Tweets from your profile and see who you follow. Here the screen is misleading, because the application in this case will only read your profile details and the profile details of the people you follow. Click **Authorize app** to grant permission.
 
 Once permission is granted, Twitter redirects the browser to the application. A connection is created and stored in the connection repository. You should see this page indicating that a connection was successful:
 
@@ -135,7 +135,7 @@ If you click on the link on the connection status page, you are taken to the hom
 
 Summary
 -------
-Congratulations! You've just developed a simple web application that obtains user authorization to fetch data from Twitter. The web application uses Spring Social to connect the user with Twitter and to retrieve data from the user's Twitter profile.
+Congratulations! You've just developed a simple web application that uses Spring Social to connect the user with Twitter. The application obtains user authorization to fetch data from the user's Twitter profile and from those whom the user follows.
 
 [zip]: https://github.com/springframework-meta/gs-accessing-twitter/archive/master.zip
 [u-war]: /understanding/war
