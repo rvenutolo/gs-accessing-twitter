@@ -62,16 +62,16 @@ In a project directory of your choosing, create the following subdirectory struc
 	<artifactId>gs-accessing-twitter</artifactId>
 	<version>0.1.0</version>
 
-	<parent>
-		<groupId>org.springframework.bootstrap</groupId>
-		<artifactId>spring-bootstrap-starters</artifactId>
-		<version>0.5.0.BUILD-SNAPSHOT</version>
-	</parent>
+    <parent>
+        <groupId>org.springframework.zero</groupId>
+        <artifactId>spring-starter-parent</artifactId>
+        <version>0.5.0.BUILD-SNAPSHOT</version>
+    </parent>
 
 	<dependencies>
 		<dependency>
-			<groupId>org.springframework.bootstrap</groupId>
-			<artifactId>spring-bootstrap-web-starter</artifactId>
+			<groupId>org.springframework.zero</groupId>
+			<artifactId>spring-starter-web</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.social</groupId>
@@ -86,7 +86,6 @@ In a project directory of your choosing, create the following subdirectory struc
 		<dependency>
 			<groupId>org.thymeleaf</groupId>
 			<artifactId>thymeleaf-spring3</artifactId>
-			<version>2.0.16</version>
 		</dependency>		
 	</dependencies>
 
@@ -313,8 +312,8 @@ Although it is possible to package this service as a traditional _web applicatio
 ```java
 package hello;
 
+import org.springframework.autoconfigure.EnableAutoConfiguration;
 import org.springframework.bootstrap.SpringApplication;
-import org.springframework.bootstrap.context.annotation.EnableAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
