@@ -5,13 +5,13 @@
 What you'll build
 -----------------
 
-This guide walks you through creating a simple web application that accesses profile data from a Twitter user and from Twitter users whom the user follows.
+This guide walks you through the process of creating a simple web application that accesses profile data from a Twitter user and from people whom the user follows on Twitter.
 
 What you'll need
 ----------------
 
  - About 15 minutes
- - An application ID and secret obtained from [registering an application with Twitter][register-twitter-app].
+ - An application ID and secret obtained from [registering an application with Twitter][/guides/gs/register-twitter-app/content].
  - <@prereq_editor_jdk_buildtools/>
 
 ## <@how_to_complete_this_guide jump_ahead='Enable Twitter'/>
@@ -53,8 +53,8 @@ Connections represent a three-way agreement between a user, an application, and 
 
 Here, the `userIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. The sample application has only one user. In a real application, you probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user (perhaps by consulting with an [`Authentication`][Authentication] obtained from Spring Security's [`SecurityContext`][SecurityContext]).
 
-### Create connection status views
-
+Create connection status views
+------------------------------
 Although much of what `ConnectController` does involves redirecting to Twitter and handling a redirect from Twitter, it also shows connection status when a GET request to /connect is made. `ConnectController` defers to a view named connect/{provider ID}Connect when no existing connection is available and to connect/{providerId}Connected when a connection exists for the provider. In this case, {provider ID} is "twitter".
 
 `ConnectController` does not define its own connection views, so you need to create them. First, here's a Thymeleaf view to be shown when no connection to Twitter exists:
@@ -76,9 +76,9 @@ With Twitter configured in your application, you now can write a Spring MVC cont
 
 `HelloController` is created by injecting a `Twitter` object into its constructor. The `Twitter` object is a reference to Spring Social's Twitter API binding.
 
-The `helloTwitter()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access their Twitter data. If not, then the user is redirected to `ConnectController` with the option to begin the authorization process.
+The `helloTwitter()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access the user's Twitter data. If not, then the user is redirected to `ConnectController` with the option to begin the authorization process.
 
-If the user authorizes the application to access the user's Twitter data, the application can fetch almost any data pertaining to the authorizing user. For the purposes of this guide, the application only fetches the user's profile as well as a list of profiles belonging to Twitter users whom the user follows (but not those who follow the user). Both are placed into the model to be displayed by the view identified as "hello".
+If the user authorizes the application to access the data, the application can fetch almost any data pertaining to the authorizing user. For the purposes of this guide, the application only fetches the user's profile as well as a list of profiles belonging to Twitter users whom the user follows (but not those who follow the user). Both are placed into the model to be displayed by the view identified as "hello".
 
 Speaking of the "hello" view, here it is as a Thymeleaf template:
 
@@ -92,7 +92,7 @@ Make the application executable
 
 Although it is possible to package this service as a traditional _web application archive_ or [WAR][u-war] file for deployment to an external application server, the simpler approach demonstrated below creates a _standalone application_. You package everything in a single, executable JAR file, driven by a good old Java `main()` method. And along the way, you use Spring's support for embedding the [Tomcat][u-tomcat] servlet container as the HTTP runtime, instead of deploying to an external instance.
 
-### Create a main class
+### Create an application class
 
     <@snippet path="src/main/java/hello/Application.java" prefix="complete"/>
 
@@ -104,7 +104,9 @@ The `@Import` annotation tells Spring to import additional Java configuration. H
 
 The [`@EnableAutoConfiguration`][] annotation switches on reasonable default behaviors based on the content of your classpath. For example, because the application depends on the embeddable version of Tomcat (tomcat-embed-core.jar), a Tomcat server is set up and configured with reasonable defaults on your behalf. And because the application also depends on Spring MVC (spring-webmvc.jar), a Spring MVC [`DispatcherServlet`][] is configured and registered for you — no `web.xml` necessary! Auto-configuration is a powerful, flexible mechanism. See the [API documentation][`@EnableAutoConfiguration`] for further details.
 
-## <@build_an_executable_jar/>
+<@build_an_executable_jar_subhead/>
+
+<@build_an_executable_jar/>
 
 <@run_the_application module="service"/>
 
@@ -120,7 +122,7 @@ When you click **Connect to Twitter**, the browser is redircted to Twitter for a
 
 ![Twitter needs your permission to allow the application to access your data.](images/twauth.png)
 
-At this point, Twitter asks if you'd like to allow the sample application to read Tweets from your profile and see who you follow. Here the screen is misleading, because the application in this case will only read your profile details and the profile details of the people you follow. Click **Authorize app** to grant permission.
+At this point, Twitter asks if you'd like to allow the sample application to read tweets from your profile and see who you follow. Here the screen is misleading, because the application in this case will only read your profile details and the profile details of the people you follow. Click **Authorize app** to grant permission.
 
 Once permission is granted, Twitter redirects the browser to the application. A connection is created and stored in the connection repository. You should see this page indicating that a connection was successful:
 
