@@ -1,7 +1,5 @@
 <#assign project_id="gs-accessing-twitter">
 
-# Getting Started: Accessing Twitter Data
-
 What you'll build
 -----------------
 

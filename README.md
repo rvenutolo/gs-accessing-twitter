@@ -1,6 +1,4 @@
 
-# Getting Started: Accessing Twitter Data
-
 What you'll build
 -----------------
 
