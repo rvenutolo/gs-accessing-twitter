@@ -1,9 +1,10 @@
 <#assign project_id="gs-accessing-twitter">
+This guide walks you through the process of creating a simple web application that accesses profile data from a Twitter user and from people whom the user follows on Twitter.
 
 What you'll build
 -----------------
 
-This guide walks you through the process of creating a simple web application that accesses profile data from a Twitter user and from people whom the user follows on Twitter.
+You'll learn how to build a simple Spring app that accesses Twitter data.
 
 What you'll need
 ----------------
