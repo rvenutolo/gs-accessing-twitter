@@ -9,7 +9,7 @@ What you'll need
 ----------------
 
  - About 15 minutes
- - An application ID and secret obtained from [registering an application with Twitter][/guides/gs/register-twitter-app/content].
+ - An application ID and secret obtained from [registering an application with Twitter][/guides/gs/register-twitter-app/].
  - <@prereq_editor_jdk_buildtools/>
 
 ## <@how_to_complete_this_guide jump_ahead='Enable Twitter'/>
