@@ -13,24 +13,24 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/")
 public class HelloController {
-	
+
     private Twitter twitter;
-    
+
     @Inject
     public HelloController(Twitter twitter) {
-        this.twitter = twitter;		
+        this.twitter = twitter;     
     }
-    
+
     @RequestMapping(method=RequestMethod.GET)
     public String helloTwitter(Model model) {
         if (!twitter.isAuthorized()) {
             return "redirect:/connect/twitter";
         }
-        
+
         model.addAttribute(twitter.userOperations().getUserProfile());
         CursoredList<TwitterProfile> friends = twitter.friendOperations().getFriends();
         model.addAttribute("friends", friends);
         return "hello";
     }
-	
+
 }
