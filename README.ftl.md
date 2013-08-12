@@ -35,9 +35,9 @@ Before you can fetch a user's data from Twitter, you need to set up a few things
 
     <@snippet path="src/main/java/hello/TwitterConfig.java" prefix="complete"/>
 
-Because the application will be accessing Twitter data, `TwitterConfig` is annotated with [`@EnableTwitter`][@EnableTwitter]. As shown here, the `appId` and `appSecret` attributes have fake values. These correspond to your application's consumer key and secret you obtain when you [register the application with Twitter][register-twitter-app]. For the code to work substitute the real values given to you by Twitter in place of the fake values.
+Because the application will be accessing Twitter data, `TwitterConfig` is annotated with [`@EnableTwitter`][@EnableTwitter]. As shown here, the `appId` and `appSecret` attributes have fake values. These correspond to your application's consumer key and secret you obtain when you [register the application with Twitter][gs-register-twitter-app]. For the code to work substitute the real values given to you by Twitter in place of the fake values.
 
-Notice that `TwitterConfig` is also annotated with [`@EnableInMemoryConnectionRepository`][@EnableInMemoryConnectionRepository]. After a user authorizes your application to access their Twitter data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
+Notice that `TwitterConfig` is also annotated with `@EnableInMemoryConnectionRepository`. After a user authorizes your application to access their Twitter data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
 
 For the purposes of this guide's sample application, an in-memory connection repository is sufficient. Although an in-memory connection repository is fine for testing and small sample applications, you'll want to select a more persistent
 option for real applications. You can use [`@EnableJdbcConnectionRepository`][@EnableJdbcConnectionRepository] to persist connections to a relational database.
@@ -142,9 +142,8 @@ Congratulations! You've just developed a simple web application that uses Spring
 [`@Component`]: http://static.springsource.org/spring/docs/current/javadoc-api/org/springframework/stereotype/Component.html
 [`@EnableAutoConfiguration`]: http://static.springsource.org/spring-bootstrap/docs/0.5.0.BUILD-SNAPSHOT/javadoc-api/org/springframework/bootstrap/context/annotation/SpringApplication.html
 [`DispatcherServlet`]: http://static.springsource.org/spring/docs/current/javadoc-api/org/springframework/web/servlet/DispatcherServlet.html
-[register-twitter-app]: /gs-register-twitter-app/README.md
+[gs-register-twitter-app]: /guides/gs/register-twitter-app
 [@EnableTwitter]: http://static.springsource.org/spring-social-twitter/docs/1.1.x/api/org/springframework/social/twitter/config/annotation/EnableTwitter.html
-[@EnableInMemoryConnectionRepository]: TODO
 [@EnableJdbcConnectionRepository]: http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/config/annotation/EnableJdbcConnectionRepository.html
 [oauth]: /understanding/OAuth
 [ConnectController]: http://static.springsource.org/spring-social/docs/1.1.x/api/org/springframework/social/connect/web/ConnectController.html
