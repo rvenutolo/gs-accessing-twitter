@@ -1,11 +1,11 @@
-## Related Resources
+## Related resources
 
 There's more to building social applications than fetching a user's profile data from Twitter. You can continue to explore Spring and social API integration with the following resources.
 
-### Getting Started Guides
+### Getting Started guides
 
-* [Accessing Facebook Data][gs-accessing-facebook]
 * [Registering an Application with Twitter][gs-register-twitter-app]
+* [Accessing Facebook Data][gs-accessing-facebook]
 * [Registering an Application with Facebook][gs-register-facebook-app]
 * [Consuming a RESTful Web Service][gs-consuming-rest]
 
@@ -20,7 +20,7 @@ There's more to building social applications than fetching a user's profile data
 
 [tut-rest]: /guides/tutorials/rest
 
-### Concepts and Technologies
+### Concepts and technologies
 
 * [OAUTH][u-oauth]
 * [REST][u-rest]
