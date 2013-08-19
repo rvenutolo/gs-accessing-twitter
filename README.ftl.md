@@ -1,16 +1,16 @@
 <#assign project_id="gs-accessing-twitter">
-This guide walks you through the process of creating a simple web application that accesses profile data from a Twitter user and from people whom the user follows on Twitter.
+This guide walks you through the process of creating a simple web application that fetches data from Twitter. 
 
 What you'll build
 -----------------
 
-You'll learn how to build a simple Spring app that accesses Twitter data.
+You'll learn how to build a Spring application that accesses profile data from a Twitter user and from people whom the user follows on Twitter.
 
 What you'll need
 ----------------
 
  - About 15 minutes
- - An application ID and secret obtained from [registering an application with Twitter][/guides/gs/register-twitter-app/].
+ - An application ID and secret obtained from [registering an application with Twitter][gs-register-twitter-app].
  - <@prereq_editor_jdk_buildtools/>
 
 ## <@how_to_complete_this_guide jump_ahead='Enable Twitter'/>
@@ -35,7 +35,7 @@ Before you can fetch a user's data from Twitter, you need to set up a few things
 
     <@snippet path="src/main/java/hello/TwitterConfig.java" prefix="complete"/>
 
-Because the application will be accessing Twitter data, `TwitterConfig` is annotated with [`@EnableTwitter`][@EnableTwitter]. As shown here, the `appId` and `appSecret` attributes have fake values. These correspond to your application's consumer key and secret you obtain when you [register the application with Twitter][gs-register-twitter-app]. For the code to work substitute the real values given to you by Twitter in place of the fake values.
+Because the application will be accessing Twitter data, `TwitterConfig` is annotated with [`@EnableTwitter`][@EnableTwitter]. As shown here, the `appId` and `appSecret` attributes have fake values. These correspond to your application's consumer key and secret you obtain when you [register the application with Twitter][gs-register-twitter-app]. For the code to work, substitute the real values given to you by Twitter in place of the fake values.
 
 Notice that `TwitterConfig` is also annotated with `@EnableInMemoryConnectionRepository`. After a user authorizes your application to access their Twitter data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
 
@@ -89,13 +89,13 @@ Note that even though the full user profiles were fetched, only the names from t
 Make the application executable
 -------------------------------
 
-Although it is possible to package this service as a traditional _web application archive_ or [WAR][u-war] file for deployment to an external application server, the simpler approach demonstrated below creates a _standalone application_. You package everything in a single, executable JAR file, driven by a good old Java `main()` method. And along the way, you use Spring's support for embedding the [Tomcat][u-tomcat] servlet container as the HTTP runtime, instead of deploying to an external instance.
+Although it is possible to package this service as a traditional [WAR][u-war] file for deployment to an external application server, the simpler approach demonstrated below creates a _standalone application_. You package everything in a single, executable JAR file, driven by a good old Java `main()` method. And along the way, you use Spring's support for embedding the [Tomcat][u-tomcat] servlet container as the HTTP runtime, instead of deploying to an external instance.
 
-### Create an application class
+### Create an Application class
 
     <@snippet path="src/main/java/hello/Application.java" prefix="complete"/>
 
-The `main()` method defers to the [`SpringApplication`][] helper class, providing `Application.class` as an argument to its `run()` method. This tells Spring to read the annotation metadata from `Application` and to manage it as a component in the _[Spring application context][u-application-context]_.
+The `main()` method defers to the [`SpringApplication`][] helper class, providing `Application.class` as an argument to its `run()` method. This tells Spring to read the annotation metadata from `Application` and to manage it as a component in the [Spring application context][u-application-context].
 
 The `@ComponentScan` annotation tells Spring to search recursively through the `hello` package and its children for classes marked directly or indirectly with Spring's [`@Component`][] annotation. This directive ensures that Spring finds and registers the `GreetingController`, because it is marked with `@Controller`, which in turn is a kind of `@Component` annotation.
 
@@ -113,7 +113,7 @@ The [`@EnableAutoConfiguration`][] annotation switches on reasonable default beh
 ... app starts up ...
 ```
 
-Once the application starts up, you can point your web browser to http://localhost:8080.Because no connection is established yet, you see this screen prompting you to connect with Twitter:
+Once the application starts up, you can point your web browser to http://localhost:8080. Because no connection is established yet, you see this screen prompting you to connect with Twitter:
 
 ![No connection to Twitter exists yet.](images/connect.png)
  
@@ -133,7 +133,7 @@ If you click on the link on the connection status page, you are taken to the hom
 
 Summary
 -------
-Congratulations! You've just developed a simple web application that uses Spring Social to connect the user with Twitter. The application obtains user authorization to fetch data from the user's Twitter profile and from those whom the user follows.
+Congratulations! You've developed a simple web application that uses Spring Social to obtain user authorization to fetch data from the user's Twitter profile and from the profiles of people whom the user follows.
 
 <@u_war/>
 <@u_tomcat/>
