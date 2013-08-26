@@ -290,7 +290,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 
 @Configuration
 @EnableAutoConfiguration
-@EnableWebMvc
 @Import(TwitterConfig.class)
 @ComponentScan
 public class Application {
