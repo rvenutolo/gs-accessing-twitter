@@ -2,6 +2,7 @@ package hello;
 
 import javax.inject.Inject;
 
+import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.twitter.api.CursoredList;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
@@ -16,14 +17,17 @@ public class HelloController {
 
     private Twitter twitter;
 
+    private ConnectionRepository connectionRepository;
+
     @Inject
-    public HelloController(Twitter twitter) {
+    public HelloController(Twitter twitter, ConnectionRepository connectionRepository) {
         this.twitter = twitter;     
+        this.connectionRepository = connectionRepository;
     }
 
     @RequestMapping(method=RequestMethod.GET)
     public String helloTwitter(Model model) {
-        if (!twitter.isAuthorized()) {
+        if (connectionRepository.findPrimaryConnection(Twitter.class) == null) {
             return "redirect:/connect/twitter";
         }
 
