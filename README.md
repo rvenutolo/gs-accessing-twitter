@@ -209,6 +209,7 @@ package hello;
 
 import javax.inject.Inject;
 
+import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.twitter.api.CursoredList;
 import org.springframework.social.twitter.api.Twitter;
 import org.springframework.social.twitter.api.TwitterProfile;
@@ -223,14 +224,17 @@ public class HelloController {
 
     private Twitter twitter;
 
+    private ConnectionRepository connectionRepository;
+
     @Inject
-    public HelloController(Twitter twitter) {
+    public HelloController(Twitter twitter, ConnectionRepository connectionRepository) {
         this.twitter = twitter;     
+        this.connectionRepository = connectionRepository;
     }
 
     @RequestMapping(method=RequestMethod.GET)
     public String helloTwitter(Model model) {
-        if (!twitter.isAuthorized()) {
+        if (connectionRepository.findPrimaryConnection(Twitter.class) == null) {
             return "redirect:/connect/twitter";
         }
 
@@ -245,7 +249,7 @@ public class HelloController {
 
 `HelloController` is created by injecting a `Twitter` object into its constructor. The `Twitter` object is a reference to Spring Social's Twitter API binding.
 
-The `helloTwitter()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access the user's Twitter data. If not, then the user is redirected to `ConnectController` with the option to begin the authorization process.
+The `helloTwitter()` method is annotated with `@RequestMapping` to indicate that it should handle GET requests for the root path (/). The first thing it does is check to see if the user has authorized the application to access the user's Twitter data (by checking for a connection to Twitter for the current user). If not, then the user is redirected to `ConnectController` with the option to begin the authorization process.
 
 If the user authorizes the application to access the data, the application can fetch almost any data pertaining to the authorizing user. For the purposes of this guide, the application only fetches the user's profile as well as a list of profiles belonging to Twitter users whom the user follows (but not those who follow the user). Both are placed into the model to be displayed by the view identified as "hello".
 
