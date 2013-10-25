@@ -58,9 +58,9 @@
         <repository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
-            <url>http://repo.spring.io/libs-snapshot</url>
+            <url>http://repo.spring.io/libs-milestone</url>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </repository>
     </repositories>
@@ -69,9 +69,9 @@
         <pluginRepository>
             <id>spring-snapshots</id>
             <name>Spring Snapshots</name>
-            <url>http://repo.spring.io/libs-snapshot</url>
+            <url>http://repo.spring.io/libs-milestone</url>
             <snapshots>
-                <enabled>true</enabled>
+                <enabled>false</enabled>
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
