@@ -44,22 +44,16 @@
 
     <repositories>
         <repository>
-            <id>spring-milestone</id>
-            <name>Spring Milestone Repository</name>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
             <url>http://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
-            <id>spring-milestone</id>
-            <name>Spring Milestone Repository</name>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
             <url>http://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
         </pluginRepository>
     </pluginRepositories>
 
