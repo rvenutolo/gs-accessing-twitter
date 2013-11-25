@@ -29,7 +29,6 @@ include::https://raw.github.com/spring-guides/getting-started-macros/master/prer
 +
 - An application ID and secret obtained from {gs-register-twitter-app}[registering an application with Twitter].
 
-:jump_ahead: Enable Twitter
 include::https://raw.github.com/spring-guides/getting-started-macros/master/how_to_complete_this_guide.adoc[]
 
 [[scratch]]
