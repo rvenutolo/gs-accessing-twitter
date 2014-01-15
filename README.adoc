@@ -1,3 +1,7 @@
+---
+tags: []
+projects: [spring-social-twitter]
+---
 :spring_version: 4.0.0.RC1
 :toc:
 :spring_boot_version: 0.5.0.M6
