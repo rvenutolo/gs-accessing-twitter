@@ -2,9 +2,9 @@
 tags: []
 projects: [spring-social-twitter]
 ---
-:spring_version: 4.0.0.RC1
+:spring_version: current
 :toc:
-:spring_boot_version: 0.5.0.M6
+:spring_boot_version: 1.0.0.RC3
 :spring_social_twitter_version: 1.1.x
 :spring_security_version: 3.2.x
 :EnableTwitter: http://docs.spring.io/spring-social-twitter/docs/{spring_social_twitter_version}/api/org/springframework/social/twitter/config/annotation/EnableTwitter.html
