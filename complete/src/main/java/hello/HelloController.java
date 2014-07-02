@@ -21,7 +21,7 @@ public class HelloController {
 
     @Inject
     public HelloController(Twitter twitter, ConnectionRepository connectionRepository) {
-        this.twitter = twitter;     
+        this.twitter = twitter;
         this.connectionRepository = connectionRepository;
     }
 

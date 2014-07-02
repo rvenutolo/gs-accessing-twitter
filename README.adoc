@@ -55,30 +55,18 @@ include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/
 
 [[initial]]
 == Enable Twitter
-Before you can fetch a user's data from Twitter, you need to set up a few things in the Spring configuration. This configuration class contains everything you need to enable Twitter in your application:
+Before you can fetch a user's data from Twitter, you must specify your application's ID and secret by setting the `spring.social.twitter.appId` and `spring.social.twitter.appSecret` properties. You can set these via any means supported by Spring Boot, including setting them in an `application.properties` file:
 
-`src/main/java/hello/TwitterConfig.java`
-[source,java]
+`src/main/resources/application.properties`
+[source,properties]
 ----
-include::complete/src/main/java/hello/TwitterConfig.java[]
+include::complete/src/main/resources/application.properties[]
 ----
 
-Because the application will be accessing Twitter data, `TwitterConfig` is annotated with {EnableTwitter}[`@EnableTwitter`]. As shown here, the `appId` and `appSecret` attributes have fake values. These correspond to your application's consumer key and secret you obtain when you {gs-register-twitter-app}[register the application with Twitter]. For the code to work, substitute the real values given to you by Twitter in place of the fake values.
 
-Notice that `TwitterConfig` is also annotated with `@EnableInMemoryConnectionRepository`. After a user authorizes your application to access their Twitter data, Spring Social will create a connection. That connection will need to be saved in a connection repository for long-term use.
+As shown here, the properties have fake values. The values given to these properties correspond to your application's consumer key and secret you obtain when you {gs-register-twitter-app}[register the application with Twitter]. For the code to work, substitute the real values given to you by Twitter in place of the fake values.
 
-For the purposes of this guide's sample application, an in-memory connection repository is sufficient. Although an in-memory connection repository is fine for testing and small sample applications, you'll want to select a more persistent
-option for real applications. You can use {EnableJdbcConnectionRepository}[`@EnableJdbcConnectionRepository`] to persist connections to a relational database.
-
-Within the `TwitterConfig`'s body, two beans are declared: a `ConnectController` bean and a `UserIdSource` bean.
-
-Obtaining user authorization from Twitter involves a "dance" of redirects between the application and Twitter. This "dance" is formally known as link:/understanding/OAuth[OAuth]'s _Resource Owner Authorization_. Don't worry if you don't know much about OAuth. Spring Social's {ConnectController}[`ConnectController`] takes care of the OAuth dance for you.
-
-Notice that `ConnectController` is created by injecting a {ConnectionFactoryLocator}[`ConnectionFactoryLocator`] and a {ConnectionRepository}[`ConnectionRepository`] via the constructor. You won't need to explicitly declare these beans, however. The `@EnableTwitter` annotation ensures that a `ConnectionFactoryLocator` bean is created, and the `@EnableInMemoryConnectionRepository` annotation creates an in-memory implementation of `ConnectionRepository`.
-
-Connections represent a three-way agreement between a user, an application, and an API provider such as Twitter. Although Twitter and the application itself are readily identifiable, you'll need a way to identify the current user. That's what the `UserIdSource` bean is for. 
-
-Here, the `userIdSource` bean is defined by an inner-class that always returns "testuser" as the user ID. The sample application has only one user. In a real application, you probably want to create an implementation of `UserIdSource` that determines the user ID from the currently authenticated user (perhaps by consulting with an {Authentication}[`Authentication`] obtained from Spring Security's {SecurityContext}[`SecurityContext`]).
+The presence of these properties along with the presence of Spring Social Twitter in the classpath will trigger automatic configuration of Spring Social's `ConnectController`, `TwitterConnectionFactory`, and other components of Spring Social's connection framework.
 
 == Create connection status views
 Although much of what `ConnectController` does involves redirecting to Twitter and handling a redirect from Twitter, it also shows connection status when a GET request to /connect is made. `ConnectController` defers to a view named connect/{provider ID}Connect when no existing connection is available and to connect/{providerId}Connected when a connection exists for the provider. In this case, {provider ID} is "twitter".
