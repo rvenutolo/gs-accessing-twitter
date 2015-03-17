@@ -28,6 +28,7 @@ You'll learn how to build a Spring application that accesses profile data from a
 
 == What you'll need
 
+:java_version: 1.7
 include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/prereq_editor_jdk_buildtools.adoc[]
 +
 - An application ID and secret obtained from {gs-register-twitter-app}[registering an application with Twitter].
