@@ -154,3 +154,6 @@ image::images/friends.png[Guess noone told you life was gonna be this way.]
 
 == Summary
 Congratulations! You've developed a simple web application that uses Spring Social to obtain user authorization to fetch data from the user's Twitter profile and from the profiles of people whom the user follows.
+
+include::https://raw.githubusercontent.com/spring-guides/getting-started-macros/master/footer.adoc[]
+
