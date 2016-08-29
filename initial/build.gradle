@@ -29,6 +29,3 @@ dependencies {
     compile("org.springframework.social:spring-social-twitter")
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '2.3'
-}
